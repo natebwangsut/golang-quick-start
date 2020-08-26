@@ -1,4 +1,4 @@
-FROM golang:1.14-alpine AS builder
+FROM golang:1.15-alpine AS builder
 
 # Go flags
 # CGO_ENABLED=1 enable dynamic link - using alpine's musl
@@ -50,6 +50,9 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Bangkok /etc/localtime
 
 # Copy over the binary file
 COPY --chown=0:0 --from=builder /dist /
+
+# Copy over static files here (e.g. DB scripts)
+# COPY staticFolder /staticFolder/
 
 # Set up the app to run as a non-root user inside the /data folder
 # User ID 65534 is usually user 'nobody'.
