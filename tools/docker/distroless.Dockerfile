@@ -36,19 +36,11 @@ RUN mkdir /data
 
 ################################################################################
 
-# Since distroless does not have a COPY command,
-# We use docker to copy a timezone file from self image (different container)
-# to itself
-FROM gcr.io/distroless/base AS timezone
-
-################################################################################
-
 # Create the minimal runtime image
 FROM gcr.io/distroless/base
 
-# Distroless does not have the ability to do so...
 # Change timezone to be Asia/Bangkok
-COPY --chown=0:0 --from=timezone /usr/share/zoneinfo/Asia/Bangkok /etc/localtime
+RUN ln -sf /usr/share/zoneinfo/Asia/Bangkok /etc/localtime
 
 # Copy over the binary file
 COPY --chown=0:0 --from=builder /dist /
