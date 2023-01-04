@@ -39,8 +39,9 @@ RUN mkdir /data
 # Create the minimal runtime image
 FROM gcr.io/distroless/base
 
+# TODO: Fix this
 # Change timezone to be Asia/Bangkok
-RUN ln -sf /usr/share/zoneinfo/Asia/Bangkok /etc/localtime
+# RUN ln -sf /usr/share/zoneinfo/Asia/Bangkok /etc/localtime
 
 # Copy over the binary file
 COPY --chown=0:0 --from=builder /dist /
