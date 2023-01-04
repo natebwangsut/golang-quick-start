@@ -1,4 +1,4 @@
-FROM golang:1.15-alpine AS builder
+FROM golang:1.19-alpine AS builder
 
 # Go flags
 # CGO_ENABLED=1 enable dynamic link - using alpine's musl
