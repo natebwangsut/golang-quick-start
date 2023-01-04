@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  build-venv:
+  build-distroless:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
